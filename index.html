@@ -10,6 +10,8 @@
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://chromelobster.github.io">
     <meta property="og:image" content="https://chromelobster.github.io/images/og-preview.png">
+    <meta name="theme-color" content="#ffffff">
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -36,7 +38,7 @@
     </script>
   </head>
   <body>
-    <a class="skip-link" href="#hero">Skip to main content</a>
+    <a class="skip-link" href="#main-content">Skip to main content</a>
 
     <header>
     <nav aria-label="Main navigation">
@@ -54,7 +56,7 @@
     </nav>
     </header>
 
-    <main>
+    <main id="main-content" tabindex="-1">
     <!-- Hero -->
     <section id="hero" tabindex="-1" aria-labelledby="hero-heading">
       <div class="section-inner hero-inner">
@@ -70,7 +72,7 @@
     </section>
 
     <!-- About -->
-    <section id="about" class="section-alt" aria-labelledby="about-heading">
+    <section id="about" class="section-alt" tabindex="-1" aria-labelledby="about-heading">
       <div class="section-inner">
         <h2 id="about-heading">About Me</h2>
         <div class="about-grid">
@@ -98,7 +100,7 @@
     </section>
 
     <!-- Skills -->
-    <section id="skills" aria-labelledby="skills-heading">
+    <section id="skills" tabindex="-1" aria-labelledby="skills-heading">
       <div class="section-inner">
         <h2 id="skills-heading">Skills</h2>
         <div class="skills-grid">
@@ -141,7 +143,7 @@
     </section>
 
     <!-- Experience -->
-    <section id="experience" class="section-alt" aria-labelledby="experience-heading">
+    <section id="experience" class="section-alt" tabindex="-1" aria-labelledby="experience-heading">
       <div class="section-inner">
         <h2 id="experience-heading">Experience</h2>
         <div class="timeline">
@@ -198,7 +200,7 @@
     </section>
 
     <!-- Education & Certifications -->
-    <section id="education" aria-labelledby="education-heading">
+    <section id="education" tabindex="-1" aria-labelledby="education-heading">
       <div class="section-inner">
         <h2 id="education-heading">Education &amp; Certifications</h2>
         <div class="edu-grid">
@@ -247,7 +249,7 @@
     </section>
 
     <!-- Selected Work -->
-    <section id="projects" class="section-alt" aria-labelledby="projects-heading">
+    <section id="projects" class="section-alt" tabindex="-1" aria-labelledby="projects-heading">
       <div class="section-inner">
         <h2 id="projects-heading">Selected Work</h2>
         <p class="section-note">Enterprise work is summarized at a high level. Confidential details are omitted.</p>
@@ -298,7 +300,7 @@
     </section>
 
     <!-- Contact -->
-    <section id="contact" aria-labelledby="contact-heading">
+    <section id="contact" tabindex="-1" aria-labelledby="contact-heading">
       <div class="section-inner">
         <h2 id="contact-heading">Get In Touch</h2>
         <p class="contact-intro">I am open to new opportunities in data analytics, business intelligence, and data quality roles. LinkedIn is the best way to reach me.</p>
@@ -321,26 +323,28 @@
     </footer>
 
     <script>
-      const sections = document.querySelectorAll('section[id]');
-      const navLinks = document.querySelectorAll('.nav-links a');
+      document.addEventListener('DOMContentLoaded', () => {
+        const sections = document.querySelectorAll('section[id]');
+        const navLinks = document.querySelectorAll('.nav-links a');
 
-      const observer = new IntersectionObserver(entries => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            navLinks.forEach(link => {
-              const isActive = link.getAttribute('href') === '#' + entry.target.id;
-              link.classList.toggle('nav-active', isActive);
-              if (isActive) {
-                link.setAttribute('aria-current', 'true');
-              } else {
-                link.removeAttribute('aria-current');
-              }
-            });
-          }
-        });
-      }, { rootMargin: '-60px 0px -60% 0px', threshold: 0 });
+        const observer = new IntersectionObserver(entries => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              navLinks.forEach(link => {
+                const isActive = link.getAttribute('href') === '#' + entry.target.id;
+                link.classList.toggle('nav-active', isActive);
+                if (isActive) {
+                  link.setAttribute('aria-current', 'true');
+                } else {
+                  link.removeAttribute('aria-current');
+                }
+              });
+            }
+          });
+        }, { rootMargin: '-60px 0px -60% 0px', threshold: 0 });
 
-      sections.forEach(section => observer.observe(section));
+        sections.forEach(section => observer.observe(section));
+      });
     </script>
   </body>
 </html>
