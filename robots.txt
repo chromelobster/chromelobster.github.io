@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://chromelobster.github.io/sitemap.xml

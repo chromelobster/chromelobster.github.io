@@ -1,4 +1,5 @@
-chromelobster.github.com
-========================
+## Ely Teitelbaum | Data Analyst
 
-Just a small website that may one day feature web apps.
+Personal portfolio site hosted at [chromelobster.github.io](https://chromelobster.github.io).
+
+Data Analyst with 7+ years of experience in reporting, data quality, and applied analytics in regulated enterprise environments. Based in Toronto, Ontario.
